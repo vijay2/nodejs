@@ -43,7 +43,7 @@ var tag = document.createElement('script');
 	 var firstScriptTag = document.getElementsByTagName('script')[0];
 	 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	
-	 var playerVars = {
+var playerVars = {
 		 modestbranding: 1,
 		 theme: 'light',
 		 showinfo: 0,
@@ -138,7 +138,7 @@ function onPlayerStateChange(event) {
 			if(change=='play'){
 				//console.log(data.currTime+' ..sync')
 				player1.seekTo(data.currTime, true);
-				player1.playVideo();
+				//player1.playVideo();
 			}
 			else if(change=='pause'){
 				player1.pauseVideo();

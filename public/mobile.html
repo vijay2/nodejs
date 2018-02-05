@@ -184,14 +184,16 @@ function syncplayer(){
    })
 }
 var playonce=true;
-socket.on('moibilechange', function(data){
-
-	if(data.timevalue==0){
+socket.on('moibilechange', function(data){	
+    
+	if(data.timevalue==0 && player2.mute!=undefined){		
+		//
+		console.log(player2.mute);
 		player2.pauseVideo();
 		return false;
 	}
 	if(playonce){
-		if(data.timevalue>=0){
+		if(data.timevalue>=0 && player2.mute!=undefined){
 		//	console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
 					if(data.statusvalue==false){	
 						//console.log(data.timevalue+' false--> ' +data.statusvalue);				
