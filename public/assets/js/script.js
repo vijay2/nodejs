@@ -1,12 +1,6 @@
 $(function() {
 
-	// Initialize the Reveal.js library with the default config options
-	// See more here https://github.com/hakimel/reveal.js#configuration
-
-	Reveal.initialize({
-		history: true		// Every slide will change the URL
-	});
-
+	
 	// Connect to the socket
 
 	var socket = io();
@@ -20,7 +14,7 @@ $(function() {
 	var key = "", animationTimeout;
 
 	// When the page is loaded it asks you for a key and sends it to the server
-
+	
 	form.submit(function(e){
 
 		e.preventDefault();
@@ -50,45 +44,8 @@ $(function() {
 			// Unblur everything
 			presentation.removeClass('blurred');
 
-			form.hide();
-
-			var ignore = false;
-
-			$(window).on('hashchange', function(){
-
-				// Notify other clients that we have navigated to a new slide
-				// by sending the "slide-changed" message to socket.io
-
-				if(ignore){
-					// You will learn more about "ignore" in a bit
-					return;
-				}
-
-				var hash = window.location.hash;
-
-				socket.emit('slide-changed', {
-					hash: hash,
-					key: key
-				});
-			});
-
-			socket.on('navigate', function(data){
-	
-				// Another device has changed its slide. Change it in this browser, too:
-
-				window.location.hash = data.hash;
-
-				// The "ignore" variable stops the hash change from
-				// triggering our hashchange handler above and sending
-				// us into a never-ending cycle.
-
-				ignore = true;
-
-				setInterval(function () {
-					ignore = false;
-				},100);
-
-			});
+			form.hide();	
+			
 
 		}
 		else {
