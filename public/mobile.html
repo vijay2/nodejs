@@ -57,7 +57,7 @@ var change;
 
 	socket = io();
 	$("#submitHandler").click(function(){
-		alert("The paragraph was clicked.");
+	//	alert("The paragraph was clicked.");
 		player2.playVideo();
 		//player2.pauseVideo();
 	});
@@ -83,6 +83,7 @@ var change;
       //    the player should play for six seconds and then stop.
 
 function onPlayerReady(event) {
+	player2.mute();
 		/*	if(done==false){
 					socket.emit('playerchange', {
 							status: 'pause',
@@ -191,9 +192,9 @@ socket.on('moibilechange', function(data){
 	}
 	if(playonce){
 		if(data.timevalue>=0){
-			console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
+		//	console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
 					if(data.statusvalue==false){	
-						console.log(data.timevalue+' false--> ' +data.statusvalue);				
+						//console.log(data.timevalue+' false--> ' +data.statusvalue);				
 						player2.seekTo(data.timevalue, true);
 						player2.playVideo();
 					}
@@ -215,7 +216,7 @@ socket.on('moibilechange', function(data){
                     presentation.removeClass('blurred');
 			        form.hide();
 					var ignore = false;
-					
+					player2.unMute();
                     syncplayer();
             }
         });

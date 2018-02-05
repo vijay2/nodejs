@@ -51,7 +51,7 @@ socket.on('mobilehandler', function(data){
 
 	// Clients send the 'slide-changed' message whenever they navigate to a new slide.
 	socket.on('message', function(data){
-		console.log(data.currenttimer+" got time value "+data.status );
+		//console.log(data.currenttimer+" got time value "+data.status );
 		presentation.emit('moibilechange', {
 			timevalue:data.currenttimer,
 			statusvalue:data.states

@@ -55,7 +55,7 @@ var tag = document.createElement('script');
 	$(function() {	
 	socket = io();
 	$("#submitHandler").click(function(){
-		alert("The paragraph was clicked.");
+	//	alert("The paragraph was clicked.");
 		player1.playVideo();
 	//	player1.pauseVideo();
 	});
@@ -147,7 +147,7 @@ function onPlayerStateChange(event) {
 		tempchange=change;
 	}
    })
-   var myVar = setInterval(function(){ myTimer() }, 1000);
+   var myVar = setInterval(function(){ myTimer() }, 100);
 	function myTimer() {
 		socket.emit('message', {currenttimer:player1.getCurrentTime(),states:done});
 	}
