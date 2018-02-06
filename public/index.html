@@ -129,7 +129,7 @@ function onPlayerStateChange(event) {
 	  var playVideo = function(){
         player1.playVideo();
    }
-
+var changeState=true;
    window.onload = function(e){ 
 	
 	socket.on('syncplayer', function(data){
@@ -137,10 +137,14 @@ function onPlayerStateChange(event) {
 		if(change!=='tempchange'){
 			if(change=='play'){
 				console.log(data.currTime+' ..sync')
-				player1.seekTo(data.currTime, true);
+				if(changeState){
+					player1.seekTo(data.currTime, true);
+					changeState=false;
+				}
 				//player1.playVideo();
 			}
 			else if(change=='pause'){
+				changeState=true;
 				player1.pauseVideo();
 
 			}
