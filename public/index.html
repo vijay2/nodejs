@@ -94,8 +94,9 @@ function onPlayerReady(event) {
       }
 function onPlayerStateChange(event) {
          if (event.data === 1) {
-					console.log('play'+done)
+					
 				if(done==true){
+					console.log('play'+done)
 					socket.emit('playerchange', {
 							status: 'play',
 							currTime:player1.getCurrentTime()
