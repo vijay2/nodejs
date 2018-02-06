@@ -84,15 +84,15 @@ var change;
       //    the player should play for six seconds and then stop.
 
 function onPlayerReady(event) {
-	player2.mute();
-		/*	if(done==false){
+		player2.mute();
+			if(done==false){
 					socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player2.getCurrentTime()
 							
 						});
 						done=true;
-                    }*/
+                    }
                  //   player2.playVideo();
 				 //   player2.pauseVideo();
 				 
@@ -104,14 +104,14 @@ function onPlayerStateChange(event) {
          if (event.data === 1) {
                 //	console.log('play')
                 isPlaying=true;
-				if(done==true){
-					/*socket.emit('playerchange', {
+				/*if(done==true){
+					socket.emit('playerchange', {
 							status: 'play',
 							currTime:player2.getCurrentTime()
 							
 						});
-						done=false;*/
-					}
+						done=false;
+					}*/
                 }
 				else if (event.data === 3) {
 					
@@ -119,14 +119,14 @@ function onPlayerStateChange(event) {
                 // Pause event.
                 else if (event.data === 2) {
                     isPlaying=false;
-					if(done==false){
-						/*socket.emit('playerchange', {
+					/*if(done==false){
+						socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player2.getCurrentTime()
 							
 						});
-						done=true;*/
-					}
+						done=true;
+					}*/
                    
                 } else if (event.data === 0){
 					
@@ -214,7 +214,7 @@ socket.on('moibilechange', function(data){
 
    socket.on('access', function(data){
         if(data.access === "granted") {
-                    console.log('allowed'+isPlaying);
+                   // console.log('allowed'+isPlaying);
                    // player2.getCurrentTime
                     presentation.removeClass('blurred');
 			        form.hide();

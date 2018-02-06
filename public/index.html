@@ -96,7 +96,7 @@ function onPlayerStateChange(event) {
          if (event.data === 1) {
 					
 				if(done==true){
-					console.log('play'+done)
+					//console.log('play'+done)
 					socket.emit('playerchange', {
 							status: 'play',
 							currTime:player1.getCurrentTime()
@@ -141,8 +141,6 @@ var changeState=true;
 				console.log(data.currTime+' ..sync')			
 					player1.seekTo(data.currTime, true);
 				
-				
-				//player1.playVideo();
 			}
 			else if(change=='pause'){
 				
