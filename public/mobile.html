@@ -9,15 +9,24 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 	<link type="text/css" rel="stylesheet" href="assets/css/styles.css" />
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<style>
+	.overlay{
+	width: 100vw;
+    height: 100vh;
+    background-color: black;
+    position: absolute;
+    opacity: 0.2;
+	}
+	</style>
 </head>
 <body>
-		<input type="button" value="click me" id="submitHandler2" />
+	<input type="button" value="click me" id="submitHandler2" />
 	<form class="login">
 		<span>What's your secret key?</span>
 		<input type="text" placeholder="Please enter your secret key!"/>
 		<input type="submit" value="➡" id="submitHandler" />
 	</form>
-	<div class="overlay"></div>
+	<div class="overlay" ></div>
 	<div class="reveal blurred">
 		<div class="slides">
 			<section data-background="assets/img/1.jpg">
@@ -172,7 +181,7 @@ function syncplayer(){
 	
     socket.on('syncplayer', function(data){
         change=data.sync;
-		console.log(data.currTime+"change");
+	//	console.log(data.currTime+"change");
 		if(change!=='tempchange'){
 			if(change=='play'){				
 				player2.seekTo(data.currTime, true);

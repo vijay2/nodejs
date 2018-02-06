@@ -11,6 +11,7 @@
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
 	<form class="login">
 		<span>What's your secret key?</span>
 		<input type="text" placeholder="Please enter your secret key!"/>
@@ -138,12 +139,12 @@ var changeState=true;
 		change=data.sync;
 		if(change!=='tempchange'){
 			if(change=='play'){
-				console.log(data.currTime+' ..sync')			
+				//console.log(data.currTime+' ..sync')			
 					player1.seekTo(data.currTime, true);
 				
 			}
 			else if(change=='pause'){				
-				console.log('pause ..sync')
+				//console.log('pause ..sync')
 				player1.pauseVideo();
 
 			}

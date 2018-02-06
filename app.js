@@ -27,7 +27,7 @@ app.use(express.static(__dirname + '/public'));
 // This is a secret key that prevents others from opening your presentation
 // and controlling it. Change it to something that only you know.
 
-var secret = 'kittens';
+var secret = 'TEST';
 
 // Initialize a new socket.io application
 
@@ -37,9 +37,10 @@ var presentation = io.on('connection', function (socket) {
 	// emit a "granted" or "denied" message.
 	var timevalue=0;
 	socket.on('load', function(data){
-
+		//console.log(data.key.toUpperCase() +"..data.key ")
+		var mykey=data.key.toUpperCase();
 		socket.emit('access', {
-			access: (data.key === secret ? "granted" : "denied")
+			access: (mykey === secret ? "granted" : "denied")
 		});
 
 	});
@@ -59,9 +60,9 @@ socket.on('mobilehandler', function(data){
 	});
 	
 	socket.on('playerchange', function(data){
-		timevalue=Math.ceil(data.currTime);		
+		timevalue=data.currTime;		
 		//	tomoble(timevalue);
-			console.log(timevalue+' mobilehandler1 ');
+			//console.log(timevalue+' mobilehandler1 ');
 				presentation.emit('syncplayer', {
 					sync: data.status,
 					currTime: timevalue
