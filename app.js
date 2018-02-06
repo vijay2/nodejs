@@ -57,18 +57,16 @@ socket.on('mobilehandler', function(data){
 			statusvalue:data.states
 		});
 	});
-	var lasttime;
+	
 	socket.on('playerchange', function(data){
-		timevalue=data.currTime;
-		if(Math.ceil(timevalue)!=Math.ceil(lasttime)){		
+		timevalue=Math.ceil(data.currTime);		
 		//	tomoble(timevalue);
 			console.log(timevalue+' mobilehandler1 ');
 				presentation.emit('syncplayer', {
 					sync: data.status,
-					currTime: data.currTime
+					currTime: timevalue
 				});
-				lasttime=timevalue;
-		}
+				
 	});
 	// Clients send the 'slide-changed' message whenever they navigate to a new slide.
 
