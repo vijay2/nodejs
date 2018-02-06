@@ -17,10 +17,32 @@
     position: absolute;
     opacity: 0.2;
 	}
+	form.login {
+		opacity: 0;
+	}
+	#submitHandler2{
+
+		position: absolute;
+		width: 160px;
+	height: 29px;
+	padding: 0 10px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	background-color: rgba(228, 226, 226, 0.8);
+	border: 1px solid #C5C5C5;
+	border-radius: 2px;	
+	text-transform: uppercase;
+	z-index: 9999;
+	cursor: pointer;
+	color:#FC0505;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+	}
 	</style>
 </head>
 <body>
-	<input type="button" value="click me" id="submitHandler2" />
+	<input type="button" value="start the player" id="submitHandler2"  />
 	<form class="login">
 		<span>What's your secret key?</span>
 		<input type="text" placeholder="Please enter your secret key!"/>
@@ -70,9 +92,10 @@ var clickonce=true;
 	socket = io();
 	$("#submitHandler2").click(function(){
 	//	alert("The paragraph was clicked.");
-
+		$('.login').css('opacity',1);
 		player2.playVideo();
 		player2.pauseVideo();
+		$(this).fadeOut('50');
 			
 		
 	});
