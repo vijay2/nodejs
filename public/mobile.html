@@ -207,7 +207,9 @@ socket.on('moibilechange', function(data){
 					}
 					playonce=false;	
 		}else{
-			player2.pauseVideo();
+			if(player2.mute!=undefined){
+				player2.pauseVideo();
+			}
 		}
 	}
 });
