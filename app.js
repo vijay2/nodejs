@@ -57,19 +57,22 @@ socket.on('mobilehandler', function(data){
 			statusvalue:data.states
 		});
 	});
+	var lasttime;
 	socket.on('playerchange', function(data){
 		timevalue=data.currTime;
-		
+		if(Math.ceil(timevalue)!=Math.ceil(lasttime)){		
 		//	tomoble(timevalue);
-		console.log(timevalue+' mobilehandler1 ');
-			presentation.emit('syncplayer', {
-				sync: data.status,
-				currTime: data.currTime
-			});
+			console.log(timevalue+' mobilehandler1 ');
+				presentation.emit('syncplayer', {
+					sync: data.status,
+					currTime: data.currTime
+				});
+				lasttime=timevalue;
+		}
 	});
 	// Clients send the 'slide-changed' message whenever they navigate to a new slide.
 
-	socket.on('slide-changed', function(data){
+/*	socket.on('slide-changed', function(data){
 
 		// Check the secret key again
 	
@@ -82,7 +85,7 @@ socket.on('mobilehandler', function(data){
 			});
 		}
 
-	});
+	});*/
 
 });
 
