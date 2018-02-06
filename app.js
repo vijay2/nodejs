@@ -61,7 +61,7 @@ socket.on('mobilehandler', function(data){
 		timevalue=data.currTime;
 		
 		//	tomoble(timevalue);
-		//console.log(timevalue+' mobilehandler1 ');
+		console.log(timevalue+' mobilehandler1 ');
 			presentation.emit('syncplayer', {
 				sync: data.status,
 				currTime: data.currTime
