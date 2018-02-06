@@ -84,13 +84,13 @@ var playerVars = {
 function onPlayerReady(event) {
 	
 			if(done==false){
-					socket.emit('playerchange', {
+				/*	socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player1.getCurrentTime()
 							
 						});
 						done=true;
-					}
+					}*/
       }
 function onPlayerStateChange(event) {
          if (event.data === 1) {
@@ -138,7 +138,7 @@ var changeState=true;
 			if(change=='play'){
 				console.log(data.currTime+' ..sync')			
 					player1.seekTo(data.currTime, true);
-					change='pause';
+				
 				
 				//player1.playVideo();
 			}
