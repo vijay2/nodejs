@@ -171,10 +171,10 @@ function syncplayer(){
         change=data.sync;
 		console.log(data.currTime+"change");
 		if(change!=='tempchange'){
-			if(change=='play'){
-				
+			if(change=='play'){				
 				player2.seekTo(data.currTime, true);
 				player2.playVideo();
+				change='pause';
 			}
 			else if(change=='pause'){
 				player2.pauseVideo();
@@ -189,7 +189,7 @@ socket.on('moibilechange', function(data){
     
 	if(data.timevalue==0 && player2.mute!=undefined){		
 		//
-		console.log(player2.mute);
+	//	console.log(player2.mute);
 		player2.pauseVideo();
 		return false;
 	}
