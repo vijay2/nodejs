@@ -84,17 +84,17 @@ var playerVars = {
 function onPlayerReady(event) {
 	
 			if(done==false){
-				/*	socket.emit('playerchange', {
+					socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player1.getCurrentTime()
 							
 						});
-						done=true;*/
+						done=true;
 					}
       }
 function onPlayerStateChange(event) {
          if (event.data === 1) {
-				//	console.log('play')
+					console.log('play')
 				if(done==true){
 					socket.emit('playerchange', {
 							status: 'play',
