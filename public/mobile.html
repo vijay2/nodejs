@@ -11,6 +11,7 @@
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+		<input type="button" value="click me" id="submitHandler2" />
 	<form class="login">
 		<span>What's your secret key?</span>
 		<input type="text" placeholder="Please enter your secret key!"/>
@@ -40,6 +41,7 @@ var done = false;
 var isPlaying=false;
 var tempchange='';
 var change;
+var playonce=true;
 	var tag = document.createElement('script');
 	 tag.src = "https://www.youtube.com/iframe_api";
 	 var firstScriptTag = document.getElementsByTagName('script')[0];
@@ -55,12 +57,15 @@ var change;
 	 };
 	
 	$(function() {	
-
+var clickonce=true;
 	socket = io();
-	$("#submitHandler").click(function(){
+	$("#submitHandler2").click(function(){
 	//	alert("The paragraph was clicked.");
+
 		player2.playVideo();
-		//player2.pauseVideo();
+		player2.pauseVideo();
+			
+		
 	});
    });
 	function onYouTubeIframeAPIReady() {
@@ -85,14 +90,14 @@ var change;
 
 function onPlayerReady(event) {
 		player2.mute();
-			if(done==false){
+		/*	if(done==false){
 					socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player2.getCurrentTime()
 							
 						});
 						done=true;
-                    }
+                    }*/
                  //   player2.playVideo();
 				 //   player2.pauseVideo();
 				 
@@ -150,9 +155,7 @@ function onPlayerStateChange(event) {
 	// When the page is loaded it asks you for a key and sends it to the server
 
 	form.submit(function(e){
-
 		e.preventDefault();
-
 		key = secretTextBox.val().trim();
 
 		// If there is a key, send it to the server-side
@@ -184,35 +187,8 @@ function syncplayer(){
 	}
    })
 }
-var playonce=true;
-socket.on('moibilechange', function(data){	
-    
-	if(data.timevalue==0 && player2.mute!=undefined){		
-		//
-	//	console.log(player2.mute);
-		player2.pauseVideo();
-		return false;
-	}
-	if(playonce){
-		if(data.timevalue>=0 && player2.mute!=undefined){
-		//	console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
-					if(data.statusvalue==false){	
-						//console.log(data.timevalue+' false--> ' +data.statusvalue);				
-						player2.seekTo(data.timevalue, true);
-						player2.playVideo();
-					}
-				else if(data.statusvalue=='true'){
-						player2.pauseVideo();
 
-					}
-					playonce=false;	
-		}else{
-			if(player2.mute!=undefined){
-				player2.pauseVideo();
-			}
-		}
-	}
-});
+
 
    socket.on('access', function(data){
         if(data.access === "granted") {
@@ -222,7 +198,39 @@ socket.on('moibilechange', function(data){
 			        form.hide();
 					var ignore = false;
 					player2.unMute();
-                    syncplayer();
+					syncplayer();
+					//
+					socket.on('moibilechange', function(data){	
+    
+							if(data.timevalue==0 && player2.mute!=undefined){		
+								//
+							//	console.log(player2.mute);
+								player2.pauseVideo();
+								return false;
+							}
+							if(playonce){
+								if(data.timevalue>=0 && player2.mute!=undefined){
+								//	console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
+											if(data.statusvalue==false){	
+												//console.log(data.timevalue+' false--> ' +data.statusvalue);				
+												player2.seekTo(data.timevalue, true);
+												player2.playVideo();
+											}
+										else if(data.statusvalue=='true'){
+												player2.pauseVideo();
+
+											}
+											playonce=false;	
+								}else{
+									if(player2.mute!=undefined){
+										player2.pauseVideo();
+									}
+								}
+							}
+						});
+
+
+					//
             }
         });
 

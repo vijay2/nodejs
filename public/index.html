@@ -82,7 +82,8 @@ var playerVars = {
       //    the player should play for six seconds and then stop.
 
 function onPlayerReady(event) {
-	
+	player1.playVideo();
+	 player1.pauseVideo();
 			if(done==false){
 					socket.emit('playerchange', {
 							status: 'pause',
@@ -93,8 +94,7 @@ function onPlayerReady(event) {
 					}
       }
 function onPlayerStateChange(event) {
-         if (event.data === 1) {
-					
+         if (event.data === 1) {					
 				if(done==true){
 					//console.log('play'+done)
 					socket.emit('playerchange', {
@@ -142,8 +142,7 @@ var changeState=true;
 					player1.seekTo(data.currTime, true);
 				
 			}
-			else if(change=='pause'){
-				
+			else if(change=='pause'){				
 				console.log('pause ..sync')
 				player1.pauseVideo();
 
