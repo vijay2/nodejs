@@ -96,11 +96,15 @@ function onPlayerStateChange(event) {
          if (event.data === 1) {
 				//	console.log('play')
 				if(done==true){
-					socket.emit('playerchange', {
+					setTimeout(function(){ 
+						socket.emit('playerchange', {
 							status: 'play',
 							currTime:player1.getCurrentTime()
 							
 						});
+
+					 }, 100);
+					
 						done=false;
 					}
                 }
@@ -110,11 +114,12 @@ function onPlayerStateChange(event) {
                 // Pause event.
                 else if (event.data === 2) {
 					if(done==false){
-					socket.emit('playerchange', {
+						setTimeout(function(){ socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player1.getCurrentTime()
 							
-						});
+						}); }, 100);
+					
 						done=true;
 					}
                    
@@ -135,16 +140,16 @@ var changeState=true;
 	socket.on('syncplayer', function(data){
 		change=data.sync;
 		if(change!=='tempchange'){
-			if(change=='play'){
+			if(change==='play'){
 				console.log(data.currTime+' ..sync')
-				if(changeState){
+			
 					player1.seekTo(data.currTime, true);
 					changeState=false;
-				}
+				
 				//player1.playVideo();
 			}
-			else if(change=='pause'){
-				changeState=true;
+			else if(change==='pause'){				
+				console.log('pause ..sync')
 				player1.pauseVideo();
 
 			}
