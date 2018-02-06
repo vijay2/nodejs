@@ -111,6 +111,7 @@ function onPlayerStateChange(event) {
                 // Pause event.
                 else if (event.data === 2) {
 					if(done==false){
+						console.log('play222222222222'+done)
 					socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player1.getCurrentTime()
