@@ -157,7 +157,9 @@ var changeState=true;
    })
    var myVar = setInterval(function(){ myTimer() }, 100);
 	function myTimer() {
-		socket.emit('message', {currenttimer:player1.getCurrentTime(),states:done});
+		if(player1.mute!=undefined){
+			socket.emit('message', {currenttimer:player1.getCurrentTime(),states:done});
+		}
 	}
 	  
 }
