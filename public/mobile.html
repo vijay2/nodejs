@@ -233,7 +233,7 @@ function syncplayer(){
 					syncplayer();
 					//
 					socket.on('moibilechange', function(data){	
-    
+						console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
 							if(data.timevalue==0 && player2.mute!=undefined){		
 								//
 							//	console.log(player2.mute);
