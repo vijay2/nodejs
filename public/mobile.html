@@ -233,7 +233,7 @@ function syncplayer(){
 					syncplayer();
 					//
 					socket.on('moibilechange', function(data){	
-						console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
+						console.log(data.timevalue+' playonce--1111> ' +data.statusvalue);	
 							if(data.timevalue==0 && player2.mute!=undefined){		
 								//
 							//	console.log(player2.mute);
@@ -242,7 +242,7 @@ function syncplayer(){
 							}
 							if(playonce){
 								if(data.timevalue>=0 && player2.mute!=undefined){
-									console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
+									console.log(data.timevalue+' playonce-2222-> ' +data.statusvalue);	
 											if(data.statusvalue==false){	
 												//console.log(data.timevalue+' false--> ' +data.statusvalue);				
 												player2.seekTo(data.timevalue, true);
