@@ -242,7 +242,7 @@ function syncplayer(){
 							}
 							if(playonce){
 								if(data.timevalue>=0 && player2.mute!=undefined){
-								//	console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
+									console.log(data.timevalue+' playonce--> ' +data.statusvalue);	
 											if(data.statusvalue==false){	
 												//console.log(data.timevalue+' false--> ' +data.statusvalue);				
 												player2.seekTo(data.timevalue, true);
