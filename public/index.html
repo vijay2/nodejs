@@ -55,13 +55,9 @@ var playerVars = {
 	
 	$(function() {	
 	socket = io();
-	$("#submitHandler").click(function(){	
-	TSB=($('form.login').find('input[type=text]').val().trim()).toUpperCase();	
-	//alert(TSB);	
-		if(TSB=='TEST'){
-		
-			player1.playVideo();
-		}
+	$("#submitHandler").click(function(){
+	//	alert("The paragraph was clicked.");
+		player1.playVideo();
 	//	player1.pauseVideo();
 	});
 
@@ -157,9 +153,7 @@ var changeState=true;
    })
    var myVar = setInterval(function(){ myTimer() }, 100);
 	function myTimer() {
-		if(player1.mute!=undefined){
-			socket.emit('message', {currenttimer:player1.getCurrentTime(),states:done});
-		}
+		socket.emit('message', {currenttimer:player1.getCurrentTime(),states:done});
 	}
 	  
 }

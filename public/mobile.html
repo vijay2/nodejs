@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title> Demo</title>
+	<title>Smartphone Remote Control for Presentations | Tutorialzine Demo</title>
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -18,7 +18,7 @@
     opacity: 0.2;
 	}
 	form.login {
-		opacity: 0;
+opacity: 0;
 	}
 	#submitHandler2{
 
@@ -204,7 +204,7 @@ function syncplayer(){
 	
     socket.on('syncplayer', function(data){
         change=data.sync;
-	//	console.log(data.currTime+"change");
+		console.log(data.currTime+"change");
 		if(change!=='tempchange'){
 			if(change=='play'){				
 				player2.seekTo(data.currTime, true);
