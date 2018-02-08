@@ -18,7 +18,7 @@
     opacity: 0.2;
 	}
 	form.login {
-opacity: 0;
+
 	}
 	#submitHandler2{
 
@@ -42,7 +42,7 @@ opacity: 0;
 	</style>
 </head>
 <body>
-	<input type="button" value="start the player" id="submitHandler2"  />
+	<!--<input type="button" value="start the player" id="submitHandler2"  />-->
 	<form class="login">
 		<span>What's your secret key?</span>
 		<input type="text" placeholder="Please enter your secret key!"/>
@@ -121,7 +121,9 @@ var clickonce=true;
       //    the player should play for six seconds and then stop.
 
 function onPlayerReady(event) {
-		player2.mute();
+		//player2.mute();
+		player2.playVideo();
+		player2.pauseVideo();
 		/*	if(done==false){
 					socket.emit('playerchange', {
 							status: 'pause',
@@ -170,13 +172,7 @@ function onPlayerStateChange(event) {
 					
 				}
 }
-      function stopVideo() {
-        player.stopVideo();
-      }
-	  var playVideo = function(){
-        player2.playVideo();
-   }
-
+     
    window.onload = function(e){ 
     var form = $('form.login');
 	var secretTextBox = form.find('input[type=text]');

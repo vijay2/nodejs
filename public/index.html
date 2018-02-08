@@ -9,9 +9,30 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 	<link type="text/css" rel="stylesheet" href="assets/css/styles.css" />
 	<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<style>
+	#submitHandler2{
+
+		position: absolute;
+		width: 160px;
+	height: 29px;
+	padding: 0 10px;
+	font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+	background-color: rgba(228, 226, 226, 0.8);
+	border: 1px solid #C5C5C5;
+	border-radius: 2px;	
+	text-transform: uppercase;
+	z-index: 9999;
+	cursor: pointer;
+	color:#FC0505;
+  left: 20%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+	}
+	</style>
 </head>
 <body>
-
+	<input type="button" value="Play" id="submitHandler2"  />
 	<form class="login">
 		<span>What's your secret key?</span>
 		<input type="text" placeholder="Please enter your secret key!"/>
@@ -58,10 +79,14 @@ var playerVars = {
 	$("#submitHandler").click(function(){
 	//	alert("The paragraph was clicked.");
 		player1.playVideo();
-		setTimeout(function(){ player1.pauseVideo();player1.playVideo(); }, 2000);
+		//setTimeout(function(){ player1.pauseVideo();player1.playVideo(); }, 2000);
 	//	player1.pauseVideo();
 	});
-
+	$("#submitHandler2").click(function(){		
+		player1.playVideo();		
+		$(this).fadeOut('50');			
+		
+	});
    });
 	function onYouTubeIframeAPIReady() {
      player1 = new YT.Player('player1', {
@@ -84,8 +109,8 @@ var playerVars = {
       //    the player should play for six seconds and then stop.
 
 function onPlayerReady(event) {
-	player1.playVideo();
-	 player1.pauseVideo();
+		player1.playVideo();
+	 	player1.pauseVideo();
 			if(done==false){
 					socket.emit('playerchange', {
 							status: 'pause',
@@ -96,7 +121,8 @@ function onPlayerReady(event) {
 					}
       }
 function onPlayerStateChange(event) {
-         if (event.data === 1) {					
+         if (event.data === 1) {
+			$("#submitHandler2").fadeOut();					
 				if(done==true){
 					//console.log('play'+done)
 					socket.emit('playerchange', {
