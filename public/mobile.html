@@ -123,18 +123,7 @@ var clickonce=true;
 function onPlayerReady(event) {
 		//player2.mute();
 		player2.playVideo();
-		player2.pauseVideo();
-		/*	if(done==false){
-					socket.emit('playerchange', {
-							status: 'pause',
-							currTime:player2.getCurrentTime()
-							
-						});
-						done=true;
-                    }*/
-                 //   player2.playVideo();
-				 //   player2.pauseVideo();
-				 
+		player2.pauseVideo();	
 
       }
 
@@ -143,29 +132,14 @@ function onPlayerStateChange(event) {
          if (event.data === 1) {
                 //	console.log('play')
                 isPlaying=true;
-				/*if(done==true){
-					socket.emit('playerchange', {
-							status: 'play',
-							currTime:player2.getCurrentTime()
-							
-						});
-						done=false;
-					}*/
+				
                 }
 				else if (event.data === 3) {
 					
                 }
                 // Pause event.
                 else if (event.data === 2) {
-                    isPlaying=false;
-					/*if(done==false){
-						socket.emit('playerchange', {
-							status: 'pause',
-							currTime:player2.getCurrentTime()
-							
-						});
-						done=true;
-					}*/
+                    isPlaying=false;					
                    
                 } else if (event.data === 0){
 					
@@ -219,9 +193,7 @@ function syncplayer(){
 
 
    socket.on('access', function(data){
-        if(data.access === "granted") {
-                   // console.log('allowed'+isPlaying);
-                   // player2.getCurrentTime
+        if(data.access === "granted") {                  
                     presentation.removeClass('blurred');
 			        form.hide();
 					var ignore = false;
@@ -238,7 +210,7 @@ function syncplayer(){
 							}
 							if(playonce){
 								if(data.timevalue>=0 && player2.mute!=undefined){
-									console.log(data.timevalue+' playonce-2222-> ' +data.statusvalue);	
+									//console.log(data.timevalue+' playonce-2222-> ' +data.statusvalue);	
 											if(data.statusvalue==false){	
 												//console.log(data.timevalue+' false--> ' +data.statusvalue);				
 												player2.seekTo(data.timevalue, true);

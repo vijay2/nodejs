@@ -28,6 +28,7 @@
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  display: none;
 	}
 	</style>
 </head>
@@ -76,11 +77,9 @@ var playerVars = {
 	
 	$(function() {	
 	socket = io();
-	$("#submitHandler").click(function(){
-	//	alert("The paragraph was clicked.");
+	$("#submitHandler").click(function(){	
 		player1.playVideo();
-		//setTimeout(function(){ player1.pauseVideo();player1.playVideo(); }, 2000);
-	//	player1.pauseVideo();
+	
 	});
 	$("#submitHandler2").click(function(){		
 		player1.playVideo();		
@@ -139,7 +138,7 @@ function onPlayerStateChange(event) {
                 // Pause event.
                 else if (event.data === 2) {
 					if(done==false){
-						console.log('play222222222222'+done)
+					//	console.log('play222222222222'+done)
 					socket.emit('playerchange', {
 							status: 'pause',
 							currTime:player1.getCurrentTime()
