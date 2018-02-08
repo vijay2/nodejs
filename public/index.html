@@ -77,13 +77,20 @@ var playerVars = {
 	
 	$(function() {	
 	socket = io();
-	$("#submitHandler").click(function(){	
-		player1.playVideo();
+	$("#submitHandler").click(function(){
+		var mykey=$('form.login').find('input[type=text]').val().trim().toUpperCase();
+		if(mykey=='TEST'){	
+			player1.playVideo();		
+			//$(this).fadeOut('50');		
+		}	
 	
 	});
-	$("#submitHandler2").click(function(){		
-		player1.playVideo();		
-		$(this).fadeOut('50');			
+	$("#submitHandler2").click(function(){	
+		
+		
+		//	player1.playVideo();		
+		//	$(this).fadeOut('50');		
+		
 		
 	});
    });
