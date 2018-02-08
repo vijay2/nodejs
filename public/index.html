@@ -58,6 +58,7 @@ var playerVars = {
 	$("#submitHandler").click(function(){
 	//	alert("The paragraph was clicked.");
 		player1.playVideo();
+		setTimeout(function(){ player1.pauseVideo();player1.playVideo(); }, 2000);
 	//	player1.pauseVideo();
 	});
 
